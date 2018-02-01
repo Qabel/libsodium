@@ -6,9 +6,7 @@ set(SODIUM_LIBRARY_VERSION_MINOR 1)
 set(DLL_VERSION 8)
 set(SODIUM_LIBRARY_VERSION 24.0.1)
 
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/src/libsodium/include/sodium/version.h.in ${CMAKE_CURRENT_BINARY_DIR}/include/version.h)
-
-add_definitions(-DCONFIGURED=1)
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/src/libsodium/include/sodium/version.h.in ${CMAKE_CURRENT_SOURCE_DIR}/src/libsodium/include/sodium/version.h)
 
 set(LIBSODIUM_SRC 
 	src/libsodium/crypto_secretbox/xchacha20poly1305/secretbox_xchacha20poly1305.c
@@ -98,74 +96,5 @@ set(LIBSODIUM_SRC
 	src/libsodium/crypto_sign/ed25519/ref10/sign.c)
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src/libsodium/include/sodium)
-include_directories(${CMAKE_CURRENT_BINARY_DIR}/include)
 
 add_library(sodium STATIC ${LIBSODIUM_SRC})
-
-set(LIBSODIUM_INC 
-	src/libsodium/include/sodium/core.h
-	src/libsodium/include/sodium/crypto_aead_aes256gcm.h
-	src/libsodium/include/sodium/crypto_aead_chacha20poly1305.h
-	src/libsodium/include/sodium/crypto_aead_xchacha20poly1305.h
-	src/libsodium/include/sodium/crypto_auth.h
-	src/libsodium/include/sodium/crypto_auth_hmacsha256.h
-	src/libsodium/include/sodium/crypto_auth_hmacsha512256.h
-	src/libsodium/include/sodium/crypto_auth_hmacsha512.h
-	src/libsodium/include/sodium/crypto_box_curve25519xchacha20poly1305.h
-	src/libsodium/include/sodium/crypto_box_curve25519xsalsa20poly1305.h
-	src/libsodium/include/sodium/crypto_box.h
-	src/libsodium/include/sodium/crypto_core_ed25519.h
-	src/libsodium/include/sodium/crypto_core_hchacha20.h
-	src/libsodium/include/sodium/crypto_core_hsalsa20.h
-	src/libsodium/include/sodium/crypto_core_salsa2012.h
-	src/libsodium/include/sodium/crypto_core_salsa208.h
-	src/libsodium/include/sodium/crypto_core_salsa20.h
-	src/libsodium/include/sodium/crypto_generichash_blake2b.h
-	src/libsodium/include/sodium/crypto_generichash.h
-	src/libsodium/include/sodium/crypto_hash.h
-	src/libsodium/include/sodium/crypto_hash_sha256.h
-	src/libsodium/include/sodium/crypto_hash_sha512.h
-	src/libsodium/include/sodium/crypto_kdf_blake2b.h
-	src/libsodium/include/sodium/crypto_kdf.h
-	src/libsodium/include/sodium/crypto_kx.h
-	src/libsodium/include/sodium/crypto_onetimeauth.h
-	src/libsodium/include/sodium/crypto_onetimeauth_poly1305.h
-	src/libsodium/include/sodium/crypto_pwhash_argon2id.h
-	src/libsodium/include/sodium/crypto_pwhash_argon2i.h
-	src/libsodium/include/sodium/crypto_pwhash.h
-	src/libsodium/include/sodium/crypto_pwhash_scryptsalsa208sha256.h
-	src/libsodium/include/sodium/crypto_scalarmult_curve25519.h
-	src/libsodium/include/sodium/crypto_scalarmult_ed25519.h
-	src/libsodium/include/sodium/crypto_scalarmult.h
-	src/libsodium/include/sodium/crypto_secretbox.h
-	src/libsodium/include/sodium/crypto_secretbox_xchacha20poly1305.h
-	src/libsodium/include/sodium/crypto_secretbox_xsalsa20poly1305.h
-	src/libsodium/include/sodium/crypto_secretstream_xchacha20poly1305.h
-	src/libsodium/include/sodium/crypto_shorthash.h
-	src/libsodium/include/sodium/crypto_shorthash_siphash24.h
-	src/libsodium/include/sodium/crypto_sign_ed25519.h
-	src/libsodium/include/sodium/crypto_sign_edwards25519sha512batch.h
-	src/libsodium/include/sodium/crypto_sign.h
-	src/libsodium/include/sodium/crypto_stream_chacha20.h
-	src/libsodium/include/sodium/crypto_stream.h
-	src/libsodium/include/sodium/crypto_stream_salsa2012.h
-	src/libsodium/include/sodium/crypto_stream_salsa208.h
-	src/libsodium/include/sodium/crypto_stream_salsa20.h
-	src/libsodium/include/sodium/crypto_stream_xchacha20.h
-	src/libsodium/include/sodium/crypto_stream_xsalsa20.h
-	src/libsodium/include/sodium/crypto_verify_16.h
-	src/libsodium/include/sodium/crypto_verify_32.h
-	src/libsodium/include/sodium/crypto_verify_64.h
-	src/libsodium/include/sodium/export.h
-	src/libsodium/include/sodium/randombytes.h
-	src/libsodium/include/sodium/randombytes_nativeclient.h
-	src/libsodium/include/sodium/randombytes_salsa20_random.h
-	src/libsodium/include/sodium/randombytes_sysrandom.h
-	src/libsodium/include/sodium/runtime.h
-	src/libsodium/include/sodium/utils.h
-	${CMAKE_CURRENT_BINARY_DIR}/include/version.h
-	)
-
-install(TARGETS sodium DESTINATION lib)
-install(FILES ${LIBSODIUM_INC}
-	DESTINATION include)
