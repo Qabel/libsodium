@@ -167,7 +167,5 @@ set(LIBSODIUM_INC
 	)
 
 install(TARGETS sodium DESTINATION lib)
-install(FILES src/libsodium/include/sodium.h
-	DESTINATION include)
 install(FILES ${LIBSODIUM_INC}
-	DESTINATION include/sodium)
+	DESTINATION include)
