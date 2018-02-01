@@ -97,4 +97,4 @@ set(LIBSODIUM_SRC
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src/libsodium/include/sodium)
 
-add_library(sodium STATIC ${LIBSODIUM_SRC})
+add_library(libsodium STATIC ${LIBSODIUM_SRC})
