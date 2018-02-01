@@ -29,6 +29,7 @@
 /obj/
 Build
 INSTALL
+Makefile
 Makefile.in
 Vagrantfile
 aclocal.m4
@@ -154,6 +155,3 @@ test/default/verify1
 test/default/xchacha20
 test/js.done
 testing
-*.swp
-build
-cmake-*
