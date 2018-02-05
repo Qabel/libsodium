@@ -202,10 +202,6 @@ AC_CHECK_DEFINE([_FORTIFY_SOURCE], [], [
 AX_CHECK_COMPILE_FLAG([-fvisibility=hidden],
   [CFLAGS="$CFLAGS -fvisibility=hidden"])
 
-AS_CASE([$host_os], [cygwin*|mingw*|msys|pw32*|cegcc*], [ ], [
-  AX_CHECK_COMPILE_FLAG([-fPIC], [CFLAGS="$CFLAGS -fPIC"])
-])
-
 AS_IF([test "$enable_pie" != "no"],[
   AX_CHECK_COMPILE_FLAG([-fPIE], [
     AX_CHECK_LINK_FLAG([-pie], [
